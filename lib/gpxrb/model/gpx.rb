@@ -21,8 +21,8 @@ module Gpxrb
         @tracks ||= []
       end
 
-      def distance(unit=:km)
-        0
+      def distance_meters
+        tracks.map(&:distance_meters).reduce(:+)
       end
     end
   end

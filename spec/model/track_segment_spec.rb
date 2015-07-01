@@ -10,9 +10,9 @@ describe Gpxrb::Model::TrackSegment do
   }
 
   it 'loads waypoints' do
-    expect(model.track_points).to be_a(Array)
-    expect(model.track_points.count).to eq(1119)
-    expect(model.track_points[0]).to be_a(Gpxrb::Model::Waypoint)
+    expect(model.waypoints).to be_a(Array)
+    expect(model.waypoints.count).to eq(1119)
+    expect(model.waypoints[0]).to be_a(Gpxrb::Model::Waypoint)
   end
 end
 

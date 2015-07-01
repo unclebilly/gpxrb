@@ -20,6 +20,10 @@ module Gpxrb
       def track_segments
         @track_segments ||= []
       end
+
+      def distance_meters
+        track_segments.map(&:distance_meters).reduce(&:+)
+      end
     end
   end
 end
