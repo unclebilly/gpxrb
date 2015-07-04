@@ -13,8 +13,7 @@ describe Gpxrb::Model::Gpx do
     expect(model.tracks[0]).to be_a(Gpxrb::Model::Track)
   end
   it 'calculates distance' do
-    expect(model.distance_meters).to eq(11.9)
-    # http://answers.google.com/answers/threadview/id/326655.html
+    expect(model.distance_meters).to eq(11_900)
   end
 end
 
