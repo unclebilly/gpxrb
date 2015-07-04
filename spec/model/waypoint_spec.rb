@@ -18,7 +18,7 @@ describe Gpxrb::Model::Waypoint do
     expect(model.latitude).to eq(44.778534000)
     expect(model.longitude).to eq(-93.165466000)
     expect(model.elevation).to eq(291.0)
-    expect(model.time).to eq("2015-06-07T19:27:31Z")
+    expect(model.time).to eq(DateTime.parse("2015-06-07T19:27:31Z"))
   end
 end
 

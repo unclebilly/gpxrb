@@ -24,6 +24,10 @@ module Gpxrb
       def distance_meters
         tracks.map(&:distance_meters).reduce(:+)
       end
+
+      def kmh
+        tracks.map(&:kmh)
+      end
     end
   end
 end

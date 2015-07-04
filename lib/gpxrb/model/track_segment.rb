@@ -18,6 +18,12 @@ module Gpxrb
           accum += pts[0].distance_meters(pts[1])
         end
       end
+
+      def kmh
+        waypoints.each_cons(2).map do |pts|
+          pts[0].kmh(pts[1])
+        end
+      end
     end
   end
 end

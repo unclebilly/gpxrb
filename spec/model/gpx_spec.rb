@@ -15,5 +15,8 @@ describe Gpxrb::Model::Gpx do
   it 'calculates distance' do
     expect(model.distance_meters).to eq(11_851.559939273355)
   end
+  it 'calculates speed' do
+    expect(model.kmh).to eq(9.8)
+  end
 end
 
