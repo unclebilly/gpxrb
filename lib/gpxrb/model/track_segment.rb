@@ -14,14 +14,9 @@ module Gpxrb
       end
 
       def distance_meters
-        @d = 0.0
-        waypoints.each_with_index.map do |w, i|
-          if waypoints[i+1]
-            @d += w.distance_meters(waypoints[i+1])
-          else
-            @d
-          end
-        end.reduce(&:+)
+        waypoints.each_cons(2).inject(0) do |accum, pts|
+          accum += pts[0].distance_meters(pts[1])
+        end
       end
     end
   end

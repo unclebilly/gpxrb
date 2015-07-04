@@ -1,15 +1,19 @@
 require 'spec_helper'
 
+SillyPoint = Struct.new(:latitude, :longitude, :elevation) do
+  include Gpxrb::Distance
+end
+
 describe Gpxrb::Distance do
-  let(:gpx) {
-    Gpxrb::Model::Gpx.new(data)
+  let(:one) {
+    SillyPoint.new(44.778534000, -93.165466000, 10)
   }
 
-  let(:waypoints) { 
-    gpx.tracks[0].track_segments[0].waypoints
+  let(:two) {
+    SillyPoint.new(44.788534000, -93.165466000, 10)
   }
 
   it 'calculates meters correctly' do
-    expect(waypoints[0].distance_meters(waypoints[41])).to eq(225.9080574843058)
+    expect(one.distance_meters(two).round).to eq(1_112)
   end
 end

@@ -15,7 +15,7 @@ module Gpxrb
                      (Math.cos(radians(latitude)) * Math.cos(radians(other_latitude)) * 
                        (Math.sin(lon_distance / 2.0) ** 2))
       c            = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
-      distance     = EARTH_RADIUS * c # meters
+      distance     = EARTH_RADIUS * c * 1000 # meters
       height       = elevation - other_elevation
       distance     = (distance ** 2) + (height ** 2)
       Math.sqrt(distance) 
