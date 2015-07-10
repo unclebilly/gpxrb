@@ -6,13 +6,13 @@ module Gpxrb
       ##
       # trk_ele is a Nokogiri element
       def initialize(trk_ele)
-        self.name = trk_ele.at_xpath('//xmlns:name').content
-        self.time = trk_ele.at_xpath('//xmlns:time').content
+        self.name = trk_ele.at_xpath('xmlns:name').content
+        self.time = trk_ele.at_xpath('xmlns:time').content
         add_track_segments(trk_ele)
       end
 
       def add_track_segments(element)
-        element.xpath("//xmlns:trkseg").each do |trkseg|
+        element.xpath("xmlns:trkseg").each do |trkseg|
           self.track_segments << Gpxrb::Model::TrackSegment.new(trkseg)
         end
       end
@@ -25,8 +25,12 @@ module Gpxrb
         track_segments.map(&:distance_meters).reduce(&:+)
       end
 
-      def kmh
-        track_segments.map(&:kmh)
+      def first_time
+        track_segments.first.first_time
+      end
+
+      def last_time
+        track_segments.last.last_time
       end
     end
   end

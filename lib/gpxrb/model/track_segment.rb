@@ -4,7 +4,7 @@ module Gpxrb
       attr_accessor :waypoints
 
       def initialize(trkseg_ele)
-        trkseg_ele.xpath("//xmlns:trkpt").each do |e|
+        trkseg_ele.xpath("xmlns:trkpt").each do |e|
           self.waypoints << Gpxrb::Model::Waypoint.new(e)
         end
       end
@@ -19,10 +19,12 @@ module Gpxrb
         end
       end
 
-      def kmh
-        waypoints.each_cons(2).map do |pts|
-          pts[0].kmh(pts[1])
-        end
+      def first_time
+        waypoints.first.time
+      end
+
+      def last_time
+        waypoints.last.time
       end
     end
   end

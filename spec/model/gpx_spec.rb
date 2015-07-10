@@ -12,11 +12,17 @@ describe Gpxrb::Model::Gpx do
     expect(model.tracks.count).to eq(1)
     expect(model.tracks[0]).to be_a(Gpxrb::Model::Track)
   end
+
   it 'calculates distance' do
-    expect(model.distance_meters).to eq(11_851.559939273355)
+    expect(model.distance_meters).to eq(11870.828663250011)
   end
-  it 'calculates speed' do
-    expect(model.kmh).to eq(9.8)
+
+  it 'calculates duration' do
+    expect(model.duration_seconds).to eq(5081)
+  end
+
+  it 'calculates meters per second' do
+    expect(model.meters_per_second).to eq(11870.828663250011 / 5081)
   end
 end
 

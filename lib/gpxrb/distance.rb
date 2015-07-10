@@ -6,6 +6,9 @@ module Gpxrb
       degrees * Math::PI / 180 
     end
 
+    ##
+    # Haversine distance with altitude
+    #
     def distance_meters(other_waypoint)
       other_latitude, other_longitude, other_elevation = other_waypoint.to_a
 

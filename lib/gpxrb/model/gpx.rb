@@ -25,8 +25,16 @@ module Gpxrb
         tracks.map(&:distance_meters).reduce(:+)
       end
 
-      def kmh
-        tracks.map(&:kmh)
+      def duration_seconds
+        tracks[-1].last_time - tracks[0].first_time
+      end
+      
+      def meters_per_second
+        if duration_seconds == 0
+          0
+        else
+          distance_meters.to_f / duration_seconds
+        end
       end
     end
   end
