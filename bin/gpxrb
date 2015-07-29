@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+require File.expand_path("../../lib/gpxrb", __FILE__)
+if (path = ARGV[0]).nil? 
+  raise "Usage: #{$0} GPX_FILE_PATH"
+end
+
+file_contents = File.read(path)
+gpx = Gpxrb::Model::Gpx.new(file_contents)
+puts path
+puts "Distance: #{"%.2f" % (gpx.distance_meters / 1000)} km"
+puts "Distance: #{"%.2f" % ((gpx.distance_meters / 1000) * 0.621371)} miles"
+puts "Duration: #{Time.at(gpx.duration_seconds).utc.strftime("%H:%M:%S")}"
+puts "Pace:     #{"%.2f" % gpx.minutes_per_kilometer} minutes/km"
+puts "Pace:     #{"%.2f" % (gpx.minutes_per_kilometer * 1.609344)} minutes/mile"

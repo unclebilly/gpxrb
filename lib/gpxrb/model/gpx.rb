@@ -36,6 +36,14 @@ module Gpxrb
           distance_meters.to_f / duration_seconds
         end
       end
+
+      def kilometers_per_hour
+        3.6 * meters_per_second
+      end
+
+      def minutes_per_kilometer
+        16.6666666666667 / (meters_per_second) 
+      end
     end
   end
 end
